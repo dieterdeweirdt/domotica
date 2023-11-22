@@ -1,4 +1,4 @@
-name: FTP Deploy
+name: 🚀 Deploy website on push
 
 on:
   push:
@@ -7,16 +7,14 @@ on:
 
 jobs:
   deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
 
-    - name: Install FTP client
-      run: sudo apt-get install -y lftp
-
-    - name: FTP Deploy step
+    - name: 📂 Sync files to FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: ${{ secrets.FTP_SERVER }}
