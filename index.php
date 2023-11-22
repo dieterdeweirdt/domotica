@@ -13,7 +13,7 @@ $buttons = getButtonsByCategory($current_category);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeWeirdt</title>
+    <title>Domotica</title>
     <link rel="stylesheet" href="assets/main.css">
     <link rel="stylesheet" href="assets/fontawsome/css/all.min.css">
 </head>
