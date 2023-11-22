@@ -16,10 +16,11 @@ jobs:
     - name: Install FTP client
       run: sudo apt-get install -y lftp
 
-    - name: Upload via FTP
-      run: |
-        lftp -c "
-        set ftp:ssl-allow no;
-        open -u ${{ secrets.FTP_USERNAME }}, ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-        mirror --reverse --delete --verbose ./ ./htdocs
-        "
+    - name: FTP Deploy step
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        ftp-server: ${{ secrets.FTP_SERVER }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /htdocs
