@@ -1,0 +1,25 @@
+name: FTP Deploy
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install FTP client
+      run: sudo apt-get install -y lftp
+
+    - name: Upload via FTP
+      run: |
+        lftp -c "
+        set ftp:ssl-allow no;
+        open -u ${{ secrets.FTP_USERNAME }}, ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+        mirror --reverse --delete --verbose ./path/to/local/files/ ./path/on/server/
+        "
