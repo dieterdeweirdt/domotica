@@ -1,4 +1,5 @@
 <?php
+echo 'test';
 require 'app.php';
 checkUser();
 
